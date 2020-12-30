@@ -18,6 +18,11 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="グループ"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:paddingHorizontal="80dp"
+            android:paddingVertical="80dp"/>
+
+
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>
