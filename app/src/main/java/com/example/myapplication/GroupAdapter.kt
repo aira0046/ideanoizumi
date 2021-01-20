@@ -13,7 +13,7 @@ import io.realm.RealmRecyclerViewAdapter
 
 class GroupAdapter(
     private val context: Context,
-    private val listener: AdapterView.OnItemClickListener,
+    private val listener: OnItemClickListener,
     private val groupList: OrderedRealmCollection<Group>?,
     private val autoUpdate:Boolean
 ):
@@ -33,16 +33,16 @@ class GroupAdapter(
     override fun onCreateViewHolder(
         viewGroup: ViewGroup,
         viewType: Int): GroupAdapter.GroupViewHolder {
-        val v = LayoutInflater.from(context)Inflate(R.layout.item_group_list.,viewGroup,false)
+        val v = LayoutInflater.from(context).inflate(R.layout.item_group_list,viewGroup,false)
         return GroupViewHolder(v)
     }
 
     class GroupViewHolder(view: View):RecyclerView.ViewHolder(view){
     val titleTextView: TextView = view.titleTextView
-     val container:LinearLayout=view.container
+     val container:LinearLayout= view.container
     }
 
     interface OnItemClickListener{
-        fun OnItemClick(item:Group)
+        fun onItemClick(item:Group)
     }
 }
