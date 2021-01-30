@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import io.realm.OrderedRealmCollection
 import io.realm.RealmRecyclerViewAdapter
+import kotlinx.android.synthetic.main.item_group_list.view.*
 
 class GroupAdapter(
     private val context: Context,
