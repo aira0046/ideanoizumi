@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import io.realm.Realm
 import io.realm.RealmRecyclerViewAdapter
 import io.realm.RealmResults
+import io.realm.Sort
 import java.util.*
 import kotlinx.android.synthetic.main.activity_group_list.*
 
@@ -15,7 +16,6 @@ class GroupListActivity : AppCompatActivity() {
         Realm.getDefaultInstance()
 
     }
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,23 +41,24 @@ class GroupListActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
 
     }
-}
 
 
-    override fun OnDestroy(){
-    super.onDestroy()
-    realm.close()
-}
+    override fun onDestroy() {
+        super.onDestroy()
+        realm.close()
+    }
 
-        fun readAll():RealmResults<Group>{
-            return realm.where(Group::class.java).findAll().short("createdAt",sort.ASCENDING)
+    fun readAll(): RealmResults<Group> {
+        return realm.where(Group::class.java).findAll().sort("createdAt", Sort.ASCENDING)
+    }
+
+    fun create(title: String) {
+        realm.executeTransaction {
+            val group: Group = it.createObject(
+                Group::class.java, UUID.randomUUID().toString ()
+            )
+            group.title = title
         }
-fun create(title:String){
-    realm.executeTransaction{
-        val group:Group = it.createObject(
-            Group::class.java, UUID.randomUUID()tostring()
-        )
-        group.title = title
     }
 }
 
