@@ -7,5 +7,5 @@ import java.util.*
 open class Group (
     @PrimaryKey open var id:String = UUID.randomUUID().toString(),
     open var title:String ="",
-    open var createdAd:Date =Date(System.currentTimeMillis())
+    open var createdAt:Date =Date(System.currentTimeMillis())
 ): RealmObject()

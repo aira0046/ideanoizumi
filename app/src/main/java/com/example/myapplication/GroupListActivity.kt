@@ -2,13 +2,18 @@ package com.example.myapplication
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import io.realm.Realm
 import io.realm.RealmRecyclerViewAdapter
 import io.realm.RealmResults
 import io.realm.Sort
 import java.util.*
 import kotlinx.android.synthetic.main.activity_group_list.*
+import kotlinx.android.synthetic.main.item_group_list.*
+import java.net.URI.create
 
 class GroupListActivity : AppCompatActivity() {
 
@@ -40,26 +45,42 @@ class GroupListActivity : AppCompatActivity() {
         recyclerView.layoutManager = GridLayoutManager(this, 2)
         recyclerView.adapter = adapter
 
-    }
+        floatingActionButton.setOnClickListener {
+            val editText = EditText(this)
+            editText.hint = "グループ名"
+            AlertDialog.Builder(this)
+                .setTitle("グループの作成")
+                .setView(editText)
+                .setPositiveButton("作成") { _, _ ->
+                    val title: String = editText.text.toString()
+                    if (title.isBlank()) {
+                        Snackbar.make(container, "グループ名を入れてね！", Snackbar.LENGTH_SHORT).show()
+                    } else {
+                        create(title)
+                    }}
+                        .setNeutralButton("キャンセル", null)
+                        .show()
+                }
+        }
 
 
-    override fun onDestroy() {
-        super.onDestroy()
-        realm.close()
-    }
+        override fun onDestroy() {
+            super.onDestroy()
+            realm.close()
+        }
 
-    fun readAll(): RealmResults<Group> {
-        return realm.where(Group::class.java).findAll().sort("createdAt", Sort.ASCENDING)
-    }
+        fun readAll(): RealmResults<Group> {
+            return realm.where(Group::class.java).findAll().sort("createdAt", Sort.ASCENDING)
+        }
 
-    fun create(title: String) {
-        realm.executeTransaction {
-            val group: Group = it.createObject(
-                Group::class.java, UUID.randomUUID().toString ()
-            )
-            group.title = title
+        fun create(title: String) {
+            realm.executeTransaction {
+                val group: Group = it.createObject(
+                    Group::class.java, UUID.randomUUID().toString()
+                )
+                group.title = title
+            }
         }
     }
-}
 
 

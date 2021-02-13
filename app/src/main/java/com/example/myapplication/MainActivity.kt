@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import io.realm.Realm
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,9 +14,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val realm:Realm= Realm.getDefaultInstance()
-        originalbutton.setOnClickListener {
-            val toRealmIdeaApplicationIntent = Intent(this, RealmIdeaApplication::class.java)
-            startActivities(toRealmIdeaApplicationIntent)
+        groupButton.setOnClickListener {
+            val intent = Intent(this, GroupListActivity::class.java)
+            startActivity(intent)
         }
     }
 }
