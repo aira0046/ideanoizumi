@@ -47,9 +47,9 @@ class WordListActivity : AppCompatActivity() {
                             .setTitle(item.title + "を削除しますか？")
                             .setPositiveButton("削除") { _, _ ->
                                 delete(item)
-                            }
+                            } .setNeutralButton("キャンセル", null)
+                            .show()
                     }
-                    .setNeutralButton("キャンセル", null)
                     .show()
             }
         }
@@ -78,7 +78,7 @@ class WordListActivity : AppCompatActivity() {
                     if (title.isBlank()) {
                         Snackbar.make(container, "ワード名を入れてね！", Snackbar.LENGTH_SHORT).show()
                     } else {
-                        create(title)
+                        create(title,groupId)
                     }}
                 .setNeutralButton("キャンセル", null)
                 .show()
