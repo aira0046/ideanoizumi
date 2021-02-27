@@ -19,15 +19,13 @@ class WordListActivity : AppCompatActivity() {
     private val realm: Realm by lazy {
         Realm.getDefaultInstance()
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_word_list)
         val listener = object :
             WordAdapter.OnItemClickListener {
             override fun onItemClick(item: Word) {
-
-
-
                 val editText = EditText(this@WordListActivity)
                 editText.hint = "ワード名"
                  editText.setText(item.title)
@@ -42,10 +40,20 @@ class WordListActivity : AppCompatActivity() {
                             update(item,title)
                         }
                     }
+                    .setNegativeButton("キャンセル", null)
+                    .setNeutralButton("削除") { _, _ ->
+
+                        AlertDialog.Builder(this@WordListActivity)
+                            .setTitle(item.title + "を削除しますか？")
+                            .setPositiveButton("削除") { _, _ ->
+                                delete(item)
+                            }
+                    }
                     .setNeutralButton("キャンセル", null)
                     .show()
             }
         }
+
         val groupId = intent.getStringExtra("GROUP_ID")?:""
         val wordList = readAll(groupId)
         val adapter =

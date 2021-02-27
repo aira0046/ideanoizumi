@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
@@ -31,7 +32,10 @@ class GroupListActivity : AppCompatActivity() {
         val listener = object :
             GroupAdapter.OnItemClickListener {
             override fun onItemClick(item: Group) {
-                TODO("Not yet implemented")
+                val intent = Intent(applicationContext, WordListActivity::class.java)
+                intent.putExtra("GROUP_ID", item.id)
+                startActivity(intent)
+
             }
         }
         val adapter = GroupAdapter(
