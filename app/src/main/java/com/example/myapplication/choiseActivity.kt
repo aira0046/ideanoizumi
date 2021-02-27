@@ -31,7 +31,7 @@ class choiseActivity : AppCompatActivity() {
 
         ideaTextView1.setOnClickListener{
             AlertDialog.Builder(this)
-                .setTitle(("１つ目もグループの選択")
+                .setTitle("１つ目もグループの選択")
                     .setItems(titleList.toTypedArray()) { _, index ->
                         ideaTextView1.text = titleList[index]
                         firstIndex = index
@@ -40,7 +40,7 @@ class choiseActivity : AppCompatActivity() {
         }
         ideaTextView2.setOnClickListener{
             AlertDialog.Builder(this)
-                .setTitle(("２つ目もグループの選択")
+                .setTitle("２つ目もグループの選択")
                     .setItems(titleList.toTypedArray()) { _, index ->
                         ideaTextView2.text = titleList[index]
                         secondIndex = index
@@ -49,10 +49,10 @@ class choiseActivity : AppCompatActivity() {
         }
 
         nextButton.setOnClickListener{
-            val intent = Intent(this,MakeIdeaActivity::class.java)
+            val intent = Intent(this,makeidea::class.java)
             intent.putExtra("FIRST_GROUP_ID",groupList[firstIndex]?.id)
             intent.putExtra("SECOND_GROUP_ID",groupList[secondIndex]?.id)
-            startActivities(intent)
+            startActivity(intent)
         }
     }
         fun readAll():RealmResults<Group>{

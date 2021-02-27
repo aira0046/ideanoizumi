@@ -18,5 +18,9 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, GroupListActivity::class.java)
             startActivity(intent)
         }
+        tukurubutton.setOnClickListener {
+            val intent = Intent(this,choiseActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
