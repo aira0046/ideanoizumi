@@ -8,9 +8,12 @@
 
     <Button
         android:id="@+id/tukurubutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
         android:text="作る"
+        android:textSize="18sp"
+        app:backgroundTint="#E91E63"
+        app:cornerRadius="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,22 +22,32 @@
 
     <Button
         android:id="@+id/groupButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
         android:text="オリジナル"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        app:backgroundTint="#4CAF50"
+        app:cornerRadius="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/mirubutton"
+        app:layout_constraintHorizontal_bias="0.638"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.571" />
 
     <Button
         android:id="@+id/mirubutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="76dp"
-        android:layout_marginRight="76dp"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginRight="72dp"
         android:text="見る"
+        android:textSize="18sp"
+        app:backgroundTint="#FFC107"
+        app:cornerRadius="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.571" />
 </androidx.constraintlayout.widget.ConstraintLayout>

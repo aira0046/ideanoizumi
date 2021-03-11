@@ -21,7 +21,7 @@
             android:paddingHorizontal="20dp"
             android:paddingVertical="70dp"
             android:text="グループ"
-            android:textSize="18sp" />
+            android:textSize="24sp" />
 
 
     </LinearLayout>
